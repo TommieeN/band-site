@@ -1,0 +1,21 @@
+@use 'variables';
+
+@mixin tablet {
+    @media (min-width: variables.$tablet-breakpoint) {
+      @content;
+    }
+  }
+
+  @mixin desktop {
+    @media (min-width: variables.$desktop-breakpoint) {
+      @content;
+    }
+  }
+
+  @mixin wrapper {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
