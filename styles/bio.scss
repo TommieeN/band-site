@@ -40,6 +40,10 @@ img {
 
 .nav {
     color: $primary-light;
+    &__link {
+        text-decoration: none;
+        color: $primary-light;
+    }
     &__header {
         padding: 0.5rem;
         text-align: center;
