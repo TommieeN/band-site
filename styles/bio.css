@@ -67,6 +67,11 @@ img {
   font-size: 2rem;
   font-weight: normal;
 }
+@media (min-width: 1280px) {
+  .nav__header {
+    font-size: 1.6rem;
+  }
+}
 .nav__list {
   display: flex;
   justify-content: space-evenly;
@@ -84,12 +89,14 @@ img {
     padding: 1rem;
     display: flex;
     width: 50%;
+    align-items: center;
     justify-content: space-around;
   }
 }
 @media (min-width: 1280px) {
   .nav {
-    width: 30%;
+    width: 40%;
+    padding: 2rem;
   }
 }
 
@@ -129,9 +136,24 @@ img {
   }
 }
 
+@media (min-width: 1280px) {
+  .musician {
+    margin: 7rem;
+  }
+}
 .musician__header {
   margin: 3rem 1rem 1rem 3rem;
   font-size: 2.3rem;
+}
+@media (min-width: 768px) {
+  .musician__header {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+}
+.musician__image-container {
+  display: flex;
+  justify-content: center;
 }
 .musician__image {
   margin-bottom: 1rem;
@@ -149,8 +171,21 @@ img {
   line-height: 2rem;
   font-weight: 600;
 }
-.musician__text-1 {
-  font-size: 1.5rem;
+@media (min-width: 1280px) {
+  .musician__text {
+    font-size: 1.1rem;
+    width: 85%;
+  }
+}
+@media (min-width: 768px) {
+  .musician__text-1 {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 768px) and (min-width: 1280px) {
+  .musician__text-1 {
+    font-size: 1.6rem;
+  }
 }
 .musician__container {
   display: flex;
@@ -159,7 +194,7 @@ img {
 }
 @media (min-width: 768px) {
   .musician__container {
-    margin: 4rem;
+    margin: 0 8rem;
   }
 }
 
@@ -171,7 +206,7 @@ img {
 }
 @media (min-width: 768px) {
   .band {
-    margin: 4rem;
+    margin: 3rem 8rem;
   }
 }
 .band__header {
@@ -193,6 +228,7 @@ img {
   .band__text-container {
     flex-direction: row;
     line-height: 2rem;
+    gap: 4rem;
     justify-content: space-between;
   }
 }
@@ -203,9 +239,8 @@ img {
 }
 @media (min-width: 768px) {
   .band__text {
-    text-align: left;
+    font-size: 1.2rem;
     line-height: 1.7rem;
-    width: 40%;
   }
 }
 
@@ -226,6 +261,11 @@ img {
 @media (min-width: 768px) {
   .photo {
     padding: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .photo {
+    padding: 3rem 7.5rem;
   }
 }
 .photo-container {
@@ -256,6 +296,11 @@ img {
     padding: 3rem;
   }
 }
+@media (min-width: 1280px) {
+  .footer {
+    padding: 3rem 7.5rem;
+  }
+}
 @media (min-width: 768px) {
   .footer__social-container {
     margin-bottom: 2rem;
@@ -278,6 +323,16 @@ img {
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__wrap {
+    justify-content: flex-start;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__info {
+    margin-right: 7rem;
   }
 }
 .footer__social {
