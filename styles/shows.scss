@@ -1,0 +1,13 @@
+@use 'partials/fonts' as *;
+@use 'partials/variables' as *;
+@use 'partials/mixins' as *;
+@use 'partials/global' as *;
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero-shows.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    color: $primary-light;
+    @include flex-column;
+}

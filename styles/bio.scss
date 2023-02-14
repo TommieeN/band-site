@@ -1,15 +1,7 @@
 @use 'partials/fonts' as *;
 @use 'partials/variables' as *;
 @use 'partials/mixins' as *;
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-  font-family: "AvenirNext LT Pro", cursive;
-}
+@use 'partials/global' as *;
 
 h1 {
     font-size: 2rem;
@@ -33,65 +25,6 @@ img {
     border-bottom: solid 0.2rem $primary-light;
 }
 
-.site-header {
-    padding-top: 1rem;
-    background-color: $primary-dark;
-}
-
-.nav {
-    display: flex;
-    flex-direction: column;
-    color: $primary-light;
-    @include tablet {
-        padding: 2rem 2rem 0;
-        gap: 5rem;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    @include desktop {
-        width: 40%;
-        padding: 2rem 2rem 0;
-    }
-    &__link {
-        text-decoration: none;
-        color: $primary-light;
-    }
-    &__header {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: normal;
-        @include tablet {
-            padding-bottom: 2rem;
-        }
-        @include desktop {
-            font-size: 1.6rem;
-        }
-    }   
-    &__list {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        list-style: none;
-        @include tablet {
-            gap: 2rem;
-        }
-    }
-    &__item {
-        text-align: center;
-        font-size: 1.1rem;
-        padding: 1rem 0;
-        width: 100%;
-
-
-        @include tablet {
-            width: 5rem;
-            padding-bottom: 2rem;
-        }
-    }
-
-}
-
 .hero {
     color: $primary-light;
     display: flex;
@@ -107,7 +40,7 @@ img {
         height: 100vh;
     }
 &__header {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 1rem;
     @include tablet {
         font-size: 4rem;
@@ -124,11 +57,11 @@ img {
         margin: 7rem;
     }
 &__header {
-    margin: 3rem 1rem 1rem 3rem;
-    font-size: 2.3rem;
+    margin: 1rem;
+    font-size: 1.5rem;
     @include tablet {
-        font-size: 3rem;
-        margin-bottom: 3rem;
+        font-size: 2.25rem;
+        margin: 2rem;
     }
 }
 &__image-container {
@@ -143,54 +76,52 @@ img {
     }
 }
 &__text {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    line-height: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6rem;
     font-weight: 600;
     @include desktop {
-        font-size: 1.1rem;
+        font-size: 1rem;
         width: 85%;
     }
 }
 &__text-1 {
     @include tablet {
-        font-size: 1.7rem;
+        font-size: 1.38rem;
         @include desktop {
             font-size: 1.6rem;
         }
     }
 }
 &__container {
-    display: flex;
-    flex-direction: column;
     margin: 1rem;
+    @include flex-column;
     @include tablet {
-        margin: 0 8rem;
+        margin: 0 6rem;
     }
 }
 }
 
 .band {
     margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    @include flex-column;
+    gap: 0.5rem;
     @include tablet {
-        margin: 3rem 8rem;
+        margin: 2rem 6rem;
     } 
     &__header {
-        font-weight: 100;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        font-weight: 600;
         @include tablet {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: bold;
             width: 40%;
             justify-content: center;
         }
     }
     &__text-container {
-        display: flex;
-        flex-direction: column;           
+        @include flex-column;          
         @include tablet {
             flex-direction: row;
             line-height: 2rem;
@@ -199,12 +130,12 @@ img {
         }
     }
     &__text {
-        margin: 1rem 0;
-        line-height: 1.5rem;
-        font-size: 1.1rem;
+        margin: 0.5rem 0;
+        line-height: 1.125rem;
+        font-size: 0.8rem;
         @include tablet {
-            font-size: 1.2rem;
-            line-height: 1.7rem;
+            font-size: 0.9rem;
+            line-height: 1.4rem;
         }
     }
 }
@@ -213,7 +144,7 @@ img {
     background: $tertiary-light;
     @include wrapper;
     @include tablet {
-        padding: 3rem;
+        padding: 2.5rem;
     }
     @include desktop {
         padding: 3rem 7.5rem
@@ -222,12 +153,11 @@ img {
         padding: 1rem 0;
         font-weight: 600;
         @include tablet {
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
     }
     &-container{
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         gap: 1rem;
         @include tablet {
             flex-direction: row;
@@ -246,95 +176,3 @@ img {
     }
 }
 
-.footer {
-    line-height: 1rem;
-    @include wrapper;
-    background: $primary-dark;
-    color: $primary-light;
-    @include tablet {
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 3rem;
-    }
-    @include desktop {
-        padding:  3rem 7.5rem;
-    }
-    &__social-container {
-        @include tablet {
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        @include desktop {
-        }
-    }
-    &__heading {
-        font-size: 2rem;
-        margin: 1rem 0;
-        @include tablet {
-            font-size: 3rem;
-        }
-    }
-    &__wrap {
-        @include tablet {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-        }
-        @include desktop {
-            justify-content: flex-start;
-        }
-    }
-    &__info {
-        @include desktop {
-            margin-right: 7rem;
-        }
-    }
-    &__social {
-        display: flex;
-        align-items: center;
-        margin: 1rem 0;
-        gap: 2.5rem;
-        @include tablet {
-            width: 35%;
-            
-        }
-    }
-    &__icon {
-        width: 2rem;
-    }
-    &__icon-f {
-        width: 1.2rem;
-    }
-    &__heading-2 {
-        margin: 1rem 0;
-        @include tablet {
-            padding-bottom: 1rem;
-        }
-    }
-    &__text {
-        margin: 2rem 0;
-        @include tablet {
-            padding-bottom: 1rem;
-        }
-    }
-    &__text-2 {
-        margin-top: 2rem;
-    }
-    &__bandsite {
-        display: none;
-        @include tablet {
-            display: flex;
-        }
-        @include desktop {
-           
-        }
-    }
-    &__bandsite-2 {
-        margin-top: 5rem;
-        @include tablet {
-            display: none;
-        }
-    }
-}

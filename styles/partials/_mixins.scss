@@ -16,3 +16,17 @@
     max-width: 100%;
     padding: 1rem;
   }
+
+
+  @mixin flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @mixin hero {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    color: $primary-light;
+  }
