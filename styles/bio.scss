@@ -176,3 +176,50 @@ img {
     }
 }
 
+
+.conversation {
+    &__header {
+        margin: 2rem 0 1rem;
+    }
+    &__avatar {
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        object-fit: cover;
+    }
+    &__form {
+        @include flex-column;
+        flex-grow: 1;
+    }
+    &__container {
+        display: flex;
+        gap: 1rem;
+    }
+    &__wrap {
+        @include flex-column;
+        margin-bottom: 1rem;
+    }
+    &__label {
+        color: $silver;
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    &__name {
+        padding: 0.5rem;
+        font-family: "AvenirNext LT Pro", cursive;
+    }
+    &__box {
+        font-family: "AvenirNext LT Pro", cursive;
+        padding: 0.5rem;
+    }
+    
+}
+.button {
+    color: $primary-light;
+    background-color: $primary-dark;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    height: 2.5rem;
+    border: none;
+}

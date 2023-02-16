@@ -123,10 +123,10 @@ body {
 .footer {
   font-size: 0.813rem;
   line-height: 1.125rem;
-  max-width: 100%;
-  padding: 1rem;
   background: #323232;
   color: #ffffff;
+  max-width: 100%;
+  padding: 1rem;
 }
 @media (min-width: 768px) {
   .footer {

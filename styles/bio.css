@@ -123,10 +123,10 @@ body {
 .footer {
   font-size: 0.813rem;
   line-height: 1.125rem;
-  max-width: 100%;
-  padding: 1rem;
   background: #323232;
   color: #ffffff;
+  max-width: 100%;
+  padding: 1rem;
 }
 @media (min-width: 768px) {
   .footer {
@@ -441,4 +441,52 @@ img {
 }
 .photo-container__image:hover {
   filter: grayscale(0);
+}
+
+.conversation__header {
+  margin: 2rem 0 1rem;
+}
+.conversation__avatar {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.conversation__form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.conversation__container {
+  display: flex;
+  gap: 1rem;
+}
+.conversation__wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.conversation__label {
+  color: #AFAFAF;
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.conversation__name {
+  padding: 0.5rem;
+  font-family: "AvenirNext LT Pro", cursive;
+}
+.conversation__box {
+  font-family: "AvenirNext LT Pro", cursive;
+  padding: 0.5rem;
+}
+
+.button {
+  color: #ffffff;
+  background-color: #323232;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  height: 2.5rem;
+  border: none;
 }/*# sourceMappingURL=bio.css.map */
