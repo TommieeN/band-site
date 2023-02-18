@@ -25,6 +25,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 h1 {
   font-size: 1.5rem;
   font-weight: normal;
@@ -69,20 +73,21 @@ body {
 }
 @media (min-width: 1280px) {
   .nav {
-    width: 40%;
-    padding: 2rem 2rem 0;
+    margin-left: 5rem;
   }
 }
 .nav__link {
+  text-align: center;
   text-decoration: none;
   color: #ffffff;
 }
 .nav__header {
-  text-align: center;
-  font-size: 1.5rem;
+  padding-top: 0.5rem;
+  width: 7rem;
 }
 @media (min-width: 768px) {
   .nav__header {
+    padding-left: 1rem;
     padding-bottom: 0.5rem;
   }
 }
@@ -221,7 +226,7 @@ body {
   }
 }
 .footer__bandsite-2 {
-  font-size: 1.5rem;
+  width: 7rem;
   margin-top: 4rem;
 }
 @media (min-width: 768px) {
@@ -448,8 +453,8 @@ img {
 }
 .conversation__avatar {
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -468,23 +473,45 @@ img {
   margin-bottom: 1rem;
 }
 .conversation__label {
-  color: #AFAFAF;
+  text-transform: uppercase;
+  color: #afafaf;
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
 }
-.conversation__name {
+.conversation__input {
   padding: 0.5rem;
+}
+.conversation__name {
+  border-color: #ffffff;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   font-family: "AvenirNext LT Pro", cursive;
 }
 .conversation__box {
   font-family: "AvenirNext LT Pro", cursive;
   padding: 0.5rem;
 }
+.conversation__list {
+  display: flex;
+  flex-direction: column;
+}
+.conversation__item {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  margin: 0.5rem 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+.conversation__item:first-child {
+  padding-top: 1rem;
+  border-top: 1px solid #e1e1e1;
+}
 
 .button {
   color: #ffffff;
   background-color: #323232;
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-size: 0.95rem;
   border-radius: 4px;
   height: 2.5rem;

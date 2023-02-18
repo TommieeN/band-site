@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
+
 h1 {
     font-size: 1.5rem;
     font-weight: normal;
@@ -47,17 +52,18 @@ body {
         justify-content: flex-start;
     }
     @include desktop {
-        width: 40%;
-        padding: 2rem 2rem 0;
+        margin-left: 5rem;
     }
     &__link {
+        text-align: center;
         text-decoration: none;
         color: $primary-light;
     }
     &__header {
-        text-align: center;
-        font-size: 1.5rem;
+        padding-top: 0.5rem;
+        width: 7rem;
         @include tablet {
+            padding-left: 1rem;
             padding-bottom: 0.5rem;
         }
         @include desktop {
@@ -180,7 +186,7 @@ body {
         }
     }
     &__bandsite-2 {
-        font-size: 1.5rem;
+        width: 7rem;
         margin-top: 4rem;
         @include tablet {
             display: none;

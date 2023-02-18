@@ -10,9 +10,13 @@
 <body>
     <header class="site-header">  
         <nav class="nav">
-                <h1 class="nav__header">
-                    <a class="nav__link" href="./index.html">BANDSITE</a>
-                </h1>
+            <a class="nav__link" href="../index.html">
+                <img  
+                class="nav__header"
+                src="../assets/Logo/Logo-bandsite.svg"               
+                alt="band-site-logo"
+                />
+            </a>
             <ul class="nav__list">
                 <li class="nav__item underline">
                     <a class="nav__link" href="./index.html">Biography</a>
@@ -58,48 +62,86 @@
     <div class="photo">
         <h2 class="photo-header">Photo Gallery</h2>
     <div class="photo-container">
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-1.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-2.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-3.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-4.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-5.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-6.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-7.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-8.jpg" alt="photo"/>
-        <img class="photo-container__image" src="./assets/Images/Photo-gallery-9.jpg" alt="photo"/>
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-1.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-2.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-3.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-4.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-5.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-6.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-7.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-8.jpg" 
+            alt="photo"
+        />
+        <img 
+            class="photo-container__image" 
+            src="./assets/Images/Photo-gallery-9.jpg" 
+            alt="photo"
+        />
     </div>
     <section class="conversation">
-        <h1 class="conversation__header">Join the Conversation</h1>
+        <h2 class="conversation__header">Join the Conversation</h2>
         <div class="conversation__container">  
             <img 
                 class="conversation__avatar" 
                 src="./assets/Images/Mohan-muruge.jpg" 
                 alt="Mohan-muruge" 
             />
-        <form class="conversation__form" id="conversation">         
+        <form class="conversation__form">         
             <div class="conversation__wrap">
-                <label class="conversation__label" for="name">NAME</label>        
+                <label class="conversation__label" for="name">name</label>        
                 <input
-                    class="conversation__name"
+                    class="conversation__input"
                     placeholder="Enter your name"
                     type="text" 
-                    id="name" 
-                    name="name" 
+                    id="commentEntry" 
+                    name="name-input" 
                 />
                 </div>
-                <label class="conversation__label" for="comment">COMMENT</label>
+                <label class="conversation__label" for="comment">comment</label>
                 <textarea
                 class="conversation__box"
                     placeholder="Add a new comment"
-                    name="comment"
-                    id="comment"
+                    name="commentEntry"
+                    id="text-input"
                     cols="30"
                     rows="5"
                 ></textarea>
                 <button class="button" type="submit">COMMENT</button>
             </form>
         </div>
-        <ul class="conversation__list"></ul>  
+        <ul class="conversation__list">
+
+        </ul>  
     </section>
 </div>
     <footer class="footer">
@@ -153,7 +195,11 @@
             <p class="footer__text">cwhyte@archentertainment.com</p>
         </section>
         </div>
-            <h1 class="footer__bandsite-2">BANDSITE</h1>
+        <img 
+        class="footer__bandsite-2"
+        src="../assets/Logo/Logo-bandsite.svg"          
+        alt="bandsite-logo"
+        />
             <p class="footer__text-2">
                 Copyright The Bees Knees © 2021 All Rights Reserved
             </p>

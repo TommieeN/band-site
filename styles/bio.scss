@@ -183,8 +183,8 @@ img {
     }
     &__avatar {
         border-radius: 50%;
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         object-fit: cover;
     }
     &__form {
@@ -200,24 +200,46 @@ img {
         margin-bottom: 1rem;
     }
     &__label {
+        text-transform: uppercase;
         color: $silver;
         font-size: 0.7rem;
         margin-bottom: 0.5rem;
     }
-    &__name {
+    &__input {
         padding: 0.5rem;
+    }
+    &__name {
+        border-color: $primary-light;
+        border-radius: 0.2rem;
+        font-size: 0.8rem;
+        font-weight: 600;
         font-family: "AvenirNext LT Pro", cursive;
     }
     &__box {
         font-family: "AvenirNext LT Pro", cursive;
         padding: 0.5rem;
     }
-    
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+    &__item {
+        display: flex;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        margin: 0.5rem 0;
+        border-bottom: 1px solid $secondary-light;
+        &:first-child {
+            padding-top: 1rem;
+            border-top: 1px solid $secondary-light;
+        }
+    }
+
 }
 .button {
     color: $primary-light;
     background-color: $primary-dark;
-    margin-top: 1rem;
+    margin: 1rem 0;
     font-size: 0.95rem;
     border-radius: 4px;
     height: 2.5rem;
