@@ -31,8 +31,10 @@ const showTimesArray = [
     },
 ];
 
-const showUl = document.querySelector(".shows__list");
+const showUl = document.querySelector(".shows__list");//grabbing element for the comment list
 
+
+// creating comment list
 for(let i = 0; i < showTimesArray.length; i++){
 
     const listItem = document.createElement("li");//create list items
@@ -88,7 +90,22 @@ for(let i = 0; i < showTimesArray.length; i++){
     showUl.appendChild(listItem)
 }
 
+//tablet and desktop sub-heading
+const showsTabletSubHeading = document.querySelector(".shows__tablet-display");//
 
+const showsTabletDate = document.createElement ("p");//Sub-heading for tablet & desktop date
+showsTabletDate.innerText = ("date")
+showsTabletDate.classList.add("shows__tablet-heading");
 
+const showsTabletVenue = document.createElement("p");//Sub-heading for tablet & desktop venue
+showsTabletVenue.innerText = ("venue");
+showsTabletVenue.classList.add("shows__tablet-heading")
 
+const showsTabletLocation = document.createElement("p");//Sub-heading for tablet & desktop location
+showsTabletLocation.innerText = ("location");
+showsTabletLocation.classList.add("shows__tablet-heading");
 
+//append sub headers to ".shows__tablet-display" element
+showsTabletSubHeading.appendChild(showsTabletDate);
+showsTabletSubHeading.appendChild(showsTabletVenue);
+showsTabletSubHeading.appendChild(showsTabletLocation);

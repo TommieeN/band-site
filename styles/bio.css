@@ -137,12 +137,12 @@ body {
   .footer {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding: 2rem;
   }
 }
 @media (min-width: 1280px) {
   .footer {
-    padding: 3rem 7.5rem;
+    padding: 3rem 4rem;
   }
 }
 @media (min-width: 768px) {
@@ -190,6 +190,11 @@ body {
     width: 35%;
   }
 }
+@media (min-width: 1280px) {
+  .footer__social {
+    width: 64%;
+  }
+}
 .footer__icon {
   width: 1.5rem;
 }
@@ -223,6 +228,11 @@ body {
   .footer__bandsite {
     font-size: 1.5rem;
     display: flex;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__bandsite {
+    margin-right: 1.5rem;
   }
 }
 .footer__bandsite-2 {
@@ -448,8 +458,22 @@ img {
   filter: grayscale(0);
 }
 
+.conversation {
+  padding: 1rem;
+}
 .conversation__header {
   margin: 2rem 0 1rem;
+}
+@media (min-width: 768px) {
+  .conversation__header {
+    font-size: 2.25rem;
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .conversation__header {
+    padding-left: 3rem;
+  }
 }
 .conversation__avatar {
   border-radius: 50%;
@@ -466,6 +490,16 @@ img {
 .conversation__container {
   display: flex;
   gap: 1rem;
+}
+@media (min-width: 768px) {
+  .conversation__container {
+    padding: 0 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .conversation__container {
+    padding: 0 18rem;
+  }
 }
 .conversation__wrap {
   display: flex;
@@ -496,6 +530,16 @@ img {
   display: flex;
   flex-direction: column;
 }
+@media (min-width: 768px) {
+  .conversation__list {
+    padding: 0 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .conversation__list {
+    padding: 0 18rem;
+  }
+}
 .conversation__item {
   display: flex;
   gap: 1rem;
@@ -507,6 +551,11 @@ img {
   padding-top: 1rem;
   border-top: 1px solid #e1e1e1;
 }
+@media (min-width: 768px) {
+  .conversation__item {
+    padding: 2rem 0;
+  }
+}
 
 .button {
   color: #ffffff;
@@ -516,4 +565,11 @@ img {
   border-radius: 4px;
   height: 2.5rem;
   border: none;
+}
+@media (min-width: 768px) {
+  .button {
+    width: 10rem;
+    margin-left: auto;
+    flex-direction: row-reverse;
+  }
 }/*# sourceMappingURL=bio.css.map */

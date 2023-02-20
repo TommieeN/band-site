@@ -106,10 +106,10 @@ body {
     @include tablet {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 3rem;
+        padding: 2rem;
     }
     @include desktop {
-        padding:  3rem 7.5rem;
+        padding:  3rem 4rem;
     }
     &__social-container {
         @include tablet {
@@ -149,8 +149,10 @@ body {
         margin: 1rem 0;
         gap: 2.5rem;
         @include tablet {
-            width: 35%;
-            
+            width: 35%;   
+        }
+        @include desktop {
+            width: 64%;
         }
     }
     &__icon {
@@ -182,7 +184,7 @@ body {
             display: flex;
         }
         @include desktop {
-           
+           margin-right: 1.5rem;
         }
     }
     &__bandsite-2 {

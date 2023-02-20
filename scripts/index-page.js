@@ -67,6 +67,25 @@ for(let i = 0; i < commentsArray.length; i++){ //for loop for list
 
 };
 
+const form = document.querySelector(".conversation__form");
+const commentUl = document.querySelector(".conversation__list");
+
+
+
+
+// form.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     const name = document.getElementById("name").value;
+//     const comment = document.getElementById("comment").value;
+
+//     const newComment = document.createElement("li");
+//     newComment.className = "conversation__comment";
+//     newComment.innerHTML = `<p class="comment__name">${name}</p><p class="comment__text">${comment}</p>`;
+//     commentUl.insertBefore(newComment, commentUl.firstChild);
+//     document.getElementById("name").value = "";
+//     document.getElementById("comment").value = "";
+// });
+
 
 
 
