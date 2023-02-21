@@ -296,6 +296,7 @@ p {
     border-radius: 4px;
     height: 2.5rem;
     border: none;
+    text-transform: uppercase;
     @include tablet {
         width: 10rem;
         margin-left: auto;
