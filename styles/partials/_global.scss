@@ -33,7 +33,7 @@ h4 {
 }
 
 body {
-    font-family: "AvenirNext LT Pro", cursive;
+    font-family: "AvenirNext LT Pro";
   }
 
 .nav {
@@ -88,7 +88,13 @@ body {
             font-size: 0.875rem;
             width: 5rem;
             padding-bottom: 1.5rem;
-        }      
+        }
+        &:hover {
+            border-bottom: 0.2rem solid $primary-light;
+        }   
+        &:active {
+            font-weight: bold;
+        }   
     }
 }
 
@@ -175,7 +181,7 @@ body {
     &__bandsite {
         display: none;
         @include tablet {
-            font-size: 1.5rem;
+            width: 7rem;
             display: flex;
         }
         @include desktop {
