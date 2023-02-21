@@ -36,10 +36,6 @@ body {
     font-family: "AvenirNext LT Pro", cursive;
   }
 
-  .underline {
-    border-bottom: solid 0.2rem $primary-light;
-}
-
 .nav {
     padding-top: 0.5rem;
     color: $primary-light;
@@ -53,6 +49,9 @@ body {
     }
     @include desktop {
         margin-left: 5rem;
+    }
+    &__item--underline {
+        border-bottom: solid 0.2rem $primary-light;
     }
     &__link {
         text-align: center;
@@ -89,12 +88,8 @@ body {
             font-size: 0.875rem;
             width: 5rem;
             padding-bottom: 1.5rem;
-        }
-        &:hover {
-            border-bottom: 0.2rem solid $primary-light;
-        }
+        }      
     }
-
 }
 
 .footer {
@@ -106,10 +101,10 @@ body {
     @include tablet {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 2rem;
+        padding: 2rem 3rem;
     }
     @include desktop {
-        padding:  3rem 4rem;
+        padding:  3rem 8rem;
     }
     &__social-container {
         @include tablet {
@@ -152,7 +147,7 @@ body {
             width: 35%;   
         }
         @include desktop {
-            width: 64%;
+            width: 50%;
         }
     }
     &__icon {

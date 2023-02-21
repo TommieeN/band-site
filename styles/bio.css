@@ -52,10 +52,6 @@ body {
   font-family: "AvenirNext LT Pro", cursive;
 }
 
-.underline {
-  border-bottom: solid 0.2rem #ffffff;
-}
-
 .nav {
   padding-top: 0.5rem;
   color: #ffffff;
@@ -75,6 +71,9 @@ body {
   .nav {
     margin-left: 5rem;
   }
+}
+.nav__item--underline {
+  border-bottom: solid 0.2rem #ffffff;
 }
 .nav__link {
   text-align: center;
@@ -121,9 +120,6 @@ body {
     padding-bottom: 1.5rem;
   }
 }
-.nav__item:hover {
-  border-bottom: 0.2rem solid #ffffff;
-}
 
 .footer {
   font-size: 0.813rem;
@@ -137,12 +133,12 @@ body {
   .footer {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 2rem 3rem;
   }
 }
 @media (min-width: 1280px) {
   .footer {
-    padding: 3rem 4rem;
+    padding: 3rem 8rem;
   }
 }
 @media (min-width: 768px) {
@@ -192,7 +188,7 @@ body {
 }
 @media (min-width: 1280px) {
   .footer__social {
-    width: 64%;
+    width: 50%;
   }
 }
 .footer__icon {
@@ -265,6 +261,10 @@ img {
   }
 }
 
+p {
+  font-size: 0.83rem;
+}
+
 .underline {
   border-bottom: solid 0.2rem #ffffff;
 }
@@ -294,7 +294,8 @@ img {
 }
 @media (min-width: 768px) {
   .hero__header {
-    font-size: 4rem;
+    font-size: 3.9rem;
+    font-weight: 700;
     padding: 2rem;
   }
 }
@@ -306,7 +307,7 @@ img {
 
 @media (min-width: 1280px) {
   .musician {
-    margin: 7rem;
+    margin: 3rem 7rem;
   }
 }
 .musician__header {
@@ -344,14 +345,12 @@ img {
     width: 85%;
   }
 }
+.musician__text-1 {
+  color: #323232;
+}
 @media (min-width: 768px) {
   .musician__text-1 {
-    font-size: 1.38rem;
-  }
-}
-@media (min-width: 768px) and (min-width: 1280px) {
-  .musician__text-1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }
 .musician__container {
@@ -397,14 +396,14 @@ img {
   .band__text-container {
     flex-direction: row;
     line-height: 2rem;
-    gap: 4rem;
+    gap: 1rem;
     justify-content: space-between;
   }
 }
 .band__text {
+  color: #323232;
   margin: 0.5rem 0;
   line-height: 1.125rem;
-  font-size: 0.8rem;
 }
 @media (min-width: 768px) {
   .band__text {
@@ -428,38 +427,43 @@ img {
     padding: 3rem 7.5rem;
   }
 }
-.photo-header {
+.photo__header {
   padding: 1rem 0;
   font-weight: 600;
 }
 @media (min-width: 768px) {
-  .photo-header {
+  .photo__header {
     font-size: 2.5rem;
   }
 }
-.photo-container {
+.photo__container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 768px) {
-  .photo-container {
+  .photo__container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 2rem;
   }
 }
-.photo-container__image {
+.photo__container__image {
   filter: grayscale(100%);
   transition: linear 0.1s;
 }
-.photo-container__image:hover {
+.photo__container__image:hover {
   filter: grayscale(0);
 }
 
 .conversation {
   padding: 1rem;
+}
+@media (min-width: 768px) {
+  .conversation {
+    padding: 2rem;
+  }
 }
 .conversation__header {
   margin: 2rem 0 1rem;
@@ -467,7 +471,7 @@ img {
 @media (min-width: 768px) {
   .conversation__header {
     font-size: 2.25rem;
-    padding: 0 1rem 1rem 1rem;
+    margin: 0 1rem 2rem 1rem;
   }
 }
 @media (min-width: 1280px) {
@@ -476,11 +480,20 @@ img {
   }
 }
 .conversation__avatar {
+  margin-top: 1rem;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+}
+@media (min-width: 768px) {
+  .conversation__avatar {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 .conversation__form {
   display: flex;
@@ -512,19 +525,23 @@ img {
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
 }
-.conversation__input {
+.conversation__input, .conversation__box {
+  border-radius: 4px;
+  border: 1px solid #e1e1e1;
+  background-color: #fafafa;
   padding: 0.5rem;
+  font-family: "AvenirNext LT Pro", cursive;
+}
+.conversation__input:focus, .conversation__box:focus {
+  outline: none;
+  border: 1px solid #000000;
+}
+.conversation__input-error, .conversation__box-error {
+  border: 1px solid #D22D2D;
 }
 .conversation__name {
-  border-color: #ffffff;
-  border-radius: 0.2rem;
-  font-size: 0.8rem;
   font-weight: 600;
   font-family: "AvenirNext LT Pro", cursive;
-}
-.conversation__box {
-  font-family: "AvenirNext LT Pro", cursive;
-  padding: 0.5rem;
 }
 .conversation__list {
   display: flex;
@@ -555,6 +572,17 @@ img {
   .conversation__item {
     padding: 2rem 0;
   }
+}
+.conversation__comment-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+.conversation__date {
+  color: #afafaf;
+}
+.conversation__name-date {
+  width: 100%;
 }
 
 .button {

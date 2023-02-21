@@ -109,3 +109,26 @@ showsTabletLocation.classList.add("shows__tablet-heading");
 showsTabletSubHeading.appendChild(showsTabletDate);
 showsTabletSubHeading.appendChild(showsTabletVenue);
 showsTabletSubHeading.appendChild(showsTabletLocation);
+
+
+//create high-light hover
+const showsList = document.querySelectorAll(".shows__item");
+showsList.forEach((showItem) => {
+    showItem.addEventListener("mouseover", () => {
+        showItem.classList.add("shows__item-hover");
+    });
+    showItem.addEventListener("mouseleave", () => {
+        showItem.classList.remove("shows__item-hover")
+    })
+})
+
+//create high-light select
+const activeRows = document.querySelectorAll(".shows__item");
+activeRows.forEach((row) => {
+    row.addEventListener("click", () => {
+        activeRows.forEach((row) => {
+            row.classList.remove("shows__item-selected");
+        });
+        row.classList.add("shows__item-selected");
+    });
+});
