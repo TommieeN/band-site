@@ -372,6 +372,7 @@ body {
   }
 }
 .shows__item-hover {
+  cursor: pointer;
   background-color: #fafafa;
 }
 .shows__item-selected {
