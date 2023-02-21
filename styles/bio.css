@@ -449,11 +449,11 @@ p {
     gap: 2rem;
   }
 }
-.photo__container__image {
+.photo__image {
   filter: grayscale(100%);
   transition: linear 0.1s;
 }
-.photo__container__image:hover {
+.photo__image:hover {
   filter: grayscale(0);
 }
 

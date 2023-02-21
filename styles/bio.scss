@@ -168,14 +168,15 @@ p {
             justify-content: space-between;
             gap: 2rem;
         }
-        &__image {
-            filter: grayscale(100%);
-            transition: linear 0.1s ; 
-            &:hover {
-            filter: grayscale(0);
-            }
-        }
+
        
+    }
+    &__image {
+        filter: grayscale(100%);
+        transition: linear 0.1s ; 
+        &:hover {
+        filter: grayscale(0);
+        }
     }
 }
 
