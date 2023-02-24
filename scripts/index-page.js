@@ -1,26 +1,3 @@
-// Array of comments
-const commentsArray = [
-    {
-        name: "Connor Walton",
-        timestamp: 1613548800000,
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-        img:""
-    },
-    {
-        name: "Emily Beach",
-        timestamp: 1610179200000,
-        text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-        img:""
-    },
-    {
-        name: "Miles Acosta",
-        timestamp: 1608451200000,
-        text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-        img:""
-    },
-
-];
-
 const timeStampConverter = function (timeStamp) { //time stamp converter function
     const timeDisplay = new Date(timeStamp);
     const dateformat = {   //convert date to use this format of time mm/dd/year
@@ -33,8 +10,35 @@ const timeStampConverter = function (timeStamp) { //time stamp converter functio
 }
 
 const commentList = document.querySelector(".conversation__list");//select unordered list
+const apiKey = "https://project-1-api.herokuapp.com/comments?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68"
 
-function displayComment(comment){
+const DisplayData = function () {
+    axios
+      .get(apiKey)
+      .then((response) => {
+        console.log(response.data);
+        const commentData = response.data;
+        commentData.sort((a, b) => b.timestamp - a.timestamp);
+        commentList.innerHTML = "";
+        commentData.forEach((commentData) => {
+          displayComment(commentData);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  DisplayData();
+//function to create element with class and text
+function createElementWithClassAndText(element, text, className) {
+    const createElement = document.createElement(element);
+    element.textContent = text;
+    element.classList.add(className);
+    return createElement;
+}
+
+function displayComment(commentData){
     const listItem = document.createElement("li");// create list items
     listItem.classList.add("conversation__item"); 
 
@@ -45,16 +49,16 @@ function displayComment(comment){
     nameDateContainer.classList.add("conversation__name-date");
 
     const nameElement = document.createElement("p");//create text element for names
-    nameElement.innerText = comment.name;
+    nameElement.innerText = commentData.name;
     nameElement.classList.add("conversation__name");
-    
+ 
     const dateElement = document.createElement("p");//time stamp converter function
-    const formattedDate = timeStampConverter(comment.timestamp);
+    const formattedDate = timeStampConverter(commentData.timestamp);
     dateElement.innerText = formattedDate;
     dateElement.classList.add("conversation__date");
 
     const textElement = document.createElement("p");//create text element for text
-    textElement.innerText = comment.text;
+    textElement.innerText = commentData.comment;
     textElement.classList.add("conversation__text");
 
     const commentImage = document.createElement("img"); //create image element for avatars
@@ -79,39 +83,37 @@ const commentInput = document.querySelector(".conversation__input")
 const nameEl = document.getElementById("name");
 const textEl = document.getElementById("comment");
 
-function createCommentEntries() {
-    commentsArray.sort((a, b) => b.timestamp - a.timestamp); //sort comments
-    commentList.innerHTML = ""; // clear comments from page
-    commentsArray.forEach((comment) => {
-        displayComment(comment); //render comments from array
-    });
-}
+commentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-commentForm.addEventListener("submit", (event) => {//submit function
-    event.preventDefault();
-    if (nameEl.value === "") {
-        nameEl.classList.add("conversation__input-error");
-        alert("Please enter your name.");
-    }
-    if (textEl.value === "") {
-        textEl.classList.add("conversation__input-error");
-        alert("Please enter your comment.")
-        return;
-    }
-    const newCommentEntry = {
-        name: nameEl.value,
-        timestamp: Date.now(),
-        text: textEl.value 
-    };
-    commentsArray.push(newCommentEntry);
-    createCommentEntries();
-    nameEl.classList.remove("conversation__input-error");
-    textEl.classList.remove("conversation__input-error");
-    event.target.reset(); // clear input fields after submit
+  if (nameEl.value === "") {
+    nameEl.classList.add("conversation__input-error");
+    alert("Please enter your name.");
+    return;
+  }
+  if (textEl.value === "") {
+    textEl.classList.add("conversation__input-error");
+    alert("Please enter your comment.");
+    return;
+  }
+
+  const commentInfo = {
+    name: nameEl.value,
+    comment: textEl.value,
+  };
+
+  axios
+    .post(apiKey, commentInfo)
+    .then(() => {
+      DisplayData();
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+
+  nameEl.classList.remove("conversation__input-error");
+  textEl.classList.remove("conversation__input-error");
+  event.target.reset();
 });
 
-createCommentEntries();  // render comments on page load
 
-function getfocus() {
-    document.getElementById("comment", "name").focus();
-}

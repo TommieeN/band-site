@@ -1,42 +1,45 @@
-const showTimesArray = [
-    {
-    date: "Mon Sept 06 2021",
-    venue: "Ronald Lane",
-    location: "San Francisco, CA"
-    },
-    {
-    date:"Tue Sept 21 2021",
-    venue:"Pier 3 East",
-    location:"San Francisco, CA"
-    },
-    {
-    date:"Fri Oct 15 2021",
-    venue:"View Lounge",
-    location:"San Francisco, CA"
-    },
-    {
-    date:"Sat Nov 06 2021",
-    venue:"Hyatt Agency",
-    location:"San Francisco, CA"
-    },
-    {
-    date:"Fri Nov 26 2021",
-    venue:"Moscow Center",
-    location:"San Francisco, CA"
-    },
-    {
-    date:"Wed Dec 15 2021",
-    venue:"Press Club",
-    location:"San Francisco, CA"
-    },
-];
+const timeStampConverter = function (timeStamp) { //time stamp converter function
+    const timeDisplay = new Date(timeStamp);
+    const dateformat = { 
+        weekday: "short",
+        month: "short", 
+        day: "2-digit", 
+        year: "numeric"
+    };
+    const newTimeDisplay = timeDisplay.toLocaleDateString("en-US", dateformat);
+    return newTimeDisplay;
+}
 
 const showUl = document.querySelector(".shows__list");//grabbing element for the comment list
 
+const apiKey = "https://project-1-api.herokuapp.com/showdates?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68"
+const DisplayData = function () {
+    axios
+      .get(apiKey)
+      .then((response) => {
+        console.log(response.data);
+        const showData = response.data;
+        showData.forEach((showData) => {
+          displayShows(showData);
+        });
+        hoverFunction();
+        highLightFunction();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  DisplayData();
+
+  function createElementWithClassAndText(tagName, className, text) {
+    const element = document.createElement(tagName);
+    element.classList.add = className;
+    element.innerText = text;
+  }
 
 // creating comment list
-for(let i = 0; i < showTimesArray.length; i++){
-
+function displayShows(showData){
     const listItem = document.createElement("li");//create list items
     listItem.classList.add("shows__item");
 
@@ -53,8 +56,15 @@ for(let i = 0; i < showTimesArray.length; i++){
     dateSubHeading.innerText = ("date")
     dateSubHeading.classList.add("shows__sub-heading");
 
-    const dateItem = document.createElement("p");//Date details
-    dateItem.innerText = showTimesArray[i].date;
+    // const dateSubHeading = createElementWithClassAndText(
+    //     "p", 
+    //     "shows__sub-heading",
+    //     "date"
+    //     );
+
+    const dateItem = document.createElement("p");
+    const formattedDate = timeStampConverter(showData.date)//Date details
+    dateItem.innerText = formattedDate
     dateItem.classList.add("shows__date");
    
     const venueSubHeading = document.createElement("p");//Sub-heading for venue
@@ -62,7 +72,7 @@ for(let i = 0; i < showTimesArray.length; i++){
     venueSubHeading.classList.add("shows__sub-heading")
 
     const venueItem = document.createElement("p");//Venue details
-    venueItem.innerText = showTimesArray[i].venue;
+    venueItem.innerText = showData.place;
     venueItem.classList.add("shows__venue");
     
     const locationSubHeading = document.createElement("p");//Location sub-heading
@@ -70,7 +80,7 @@ for(let i = 0; i < showTimesArray.length; i++){
     locationSubHeading.classList.add("shows__sub-heading");
 
     const locationItem = document.createElement("p");//Location details
-    locationItem.innerText = showTimesArray[i].location;
+    locationItem.innerText = showData.location;
     locationItem.classList.add("shows__location");
     
     const showsButton = document.createElement("button");//Shows button
@@ -90,6 +100,9 @@ for(let i = 0; i < showTimesArray.length; i++){
     showUl.appendChild(listItem)
 }
 
+
+
+
 //tablet and desktop sub-heading
 const showsTabletSubHeading = document.querySelector(".shows__tablet-display");//
 
@@ -105,25 +118,29 @@ const showsTabletLocation = document.createElement("p");//Sub-heading for tablet
 showsTabletLocation.innerText = ("location");
 showsTabletLocation.classList.add("shows__tablet-heading");
 
-//append sub headers to ".shows__tablet-display" element
+
 showsTabletSubHeading.appendChild(showsTabletDate);
 showsTabletSubHeading.appendChild(showsTabletVenue);
-showsTabletSubHeading.appendChild(showsTabletLocation);
+showsTabletSubHeading.appendChild(showsTabletLocation);//append sub headers to ".shows__tablet-display" element
 
 
 //create high-light hover
-const showsList = document.querySelectorAll(".shows__item");
+const hoverFunction = function (){
+    const showsList = document.querySelectorAll(".shows__item");
 showsList.forEach((showItem) => {
     showItem.addEventListener("mouseover", () => {
         showItem.classList.add("shows__item-hover");
     });
     showItem.addEventListener("mouseleave", () => {
         showItem.classList.remove("shows__item-hover")
-    })
-})
+    });
+});
+};
+
 
 //create high-light select
-const activeRows = document.querySelectorAll(".shows__item");
+const highLightFunction = function () {
+    const activeRows = document.querySelectorAll(".shows__item");
 activeRows.forEach((row) => {
     row.addEventListener("click", () => {
         activeRows.forEach((row) => {
@@ -132,3 +149,4 @@ activeRows.forEach((row) => {
         row.classList.add("shows__item-selected");
     });
 });
+};

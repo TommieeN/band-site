@@ -146,6 +146,7 @@ body {
         outline: none;
         font-size: 1rem;
         text-transform: uppercase;
+        cursor: pointer;
         &:hover {
             background-color: $primary-darkblack;
         }
