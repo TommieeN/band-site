@@ -12,6 +12,7 @@ const timeStampConverter = function (timeStamp) { //time stamp converter functio
 const commentList = document.querySelector(".conversation__list");//select unordered list
 const apiKey = "https://project-1-api.herokuapp.com/comments?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68"
 
+//grab data from axios for displaying comments
 const DisplayData = function () {
     axios
       .get(apiKey)
@@ -21,7 +22,7 @@ const DisplayData = function () {
         commentData.sort((a, b) => b.timestamp - a.timestamp);
         commentList.innerHTML = "";
         commentData.forEach((commentData) => {
-          displayComment(commentData);
+          displayComment(commentData, response);
         });
       })
       .catch((error) => {
@@ -30,50 +31,92 @@ const DisplayData = function () {
   };
   
   DisplayData();
+  
 //function to create element with class and text
-function createElementWithClassAndText(element, text, className) {
+function createElementWithClassAndText(element, className, text) {
     const createElement = document.createElement(element);
-    element.textContent = text;
-    element.classList.add(className);
+    createElement.textContent = text;
+    createElement.classList.add(className);
     return createElement;
 }
+//function to create element with class
+function createElementWithClass(element, className) {
+  const createElement = document.createElement(element);
+  createElement.classList.add(className);
+  return createElement
+}
 
+//creating all of comment list
 function displayComment(commentData){
-    const listItem = document.createElement("li");// create list items
-    listItem.classList.add("conversation__item"); 
+    const listItem = createElementWithClass ("li", "conversation__item");
 
-    const commentTextContainer = document.createElement("div")//create container for the name, text, and date
-    commentTextContainer.classList.add("conversation__comment-container")
+    const commentTextContainer = createElementWithClass (
+      "div", 
+      "conversation__comment-container"
+      );
     
-    const nameDateContainer = document.createElement("div");//create container for name and date
-    nameDateContainer.classList.add("conversation__name-date");
+    const nameDateContainer = createElementWithClass (
+      "div",
+      "conversation__name-date"
+    );
 
-    const nameElement = document.createElement("p");//create text element for names
-    nameElement.innerText = commentData.name;
-    nameElement.classList.add("conversation__name");
- 
-    const dateElement = document.createElement("p");//time stamp converter function
+    const nameElement = createElementWithClassAndText (
+      "p",
+      "conversation__name",
+      commentData.name
+    );
     const formattedDate = timeStampConverter(commentData.timestamp);
-    dateElement.innerText = formattedDate;
-    dateElement.classList.add("conversation__date");
 
-    const textElement = document.createElement("p");//create text element for text
+    const dateElement = createElementWithClassAndText (
+      "p",
+      "conversation__date",
+      formattedDate 
+      );
+
+    const textElement = document.createElement("p");
     textElement.innerText = commentData.comment;
-    textElement.classList.add("conversation__text");
 
-    const commentImage = document.createElement("img"); //create image element for avatars
+    const commentImage = document.createElement("img"); 
     commentImage.classList.add("conversation__avatar");
     commentImage.setAttribute("src", "https://via.placeholder.com/150/e1e1e1/e1e1e1.jpg");
     commentImage.setAttribute("alt", "avatar");
+
+    const buttonWrapper = createElementWithClass (
+      "div",
+      "conversation__button-wrap"
+    );
+
+    const likeButton = createElementWithClassAndText (
+      "button",
+      "conversation__like-button",
+      `${commentData.likes} likes`
+    );
     
     commentTextContainer.appendChild(nameElement); //append name to container
     commentTextContainer.appendChild(dateElement); //append date to container
     nameDateContainer.appendChild(commentTextContainer); //append name and date container
     nameDateContainer.appendChild(textElement); // append text to container
+    buttonWrapper.appendChild(likeButton);
     listItem.appendChild(commentImage); // apend image to list item
-    listItem.appendChild(nameDateContainer); // append container w/ name and date to list item
+    nameDateContainer.appendChild(buttonWrapper);
+    listItem.appendChild(nameDateContainer); // append container w/ name and date to list item 
     commentList.appendChild(listItem); // append list items to unordered list
 
+    const id = commentData.id;
+    likeButton.addEventListener("click", () => {
+      axios
+      .put(
+        `https://project-1-api.herokuapp.com/comments/${id}/like?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68`
+      )
+      .then((response) => {
+        console.log(response);
+        commentData.likes = response.data.likes;
+        likeButton.innerText = `${response.data.likes} likes`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    });
 };
 
 
@@ -89,11 +132,14 @@ commentForm.addEventListener("submit", (event) => {
   if (nameEl.value === "") {
     nameEl.classList.add("conversation__input-error");
     alert("Please enter your name.");
-    return;
   }
+
   if (textEl.value === "") {
     textEl.classList.add("conversation__input-error");
     alert("Please enter your comment.");
+  }
+
+  if (nameEl.value === "" || textEl.value === "") {
     return;
   }
 

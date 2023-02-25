@@ -604,6 +604,20 @@ p {
 .conversation__name-date {
   width: 100%;
 }
+.conversation__button-wrap {
+  padding-top: 1rem;
+  display: flex;
+}
+.conversation__like-button {
+  width: 3.5rem;
+  padding: 0.2rem 0;
+  background: #323232;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.conversation__like-button:hover {
+  background: #000000;
+}
 
 .button {
   color: #ffffff;

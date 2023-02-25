@@ -288,6 +288,20 @@ p {
     &__name-date {
         width: 100%;
     }
+    &__button-wrap {
+        padding-top: 1rem;
+        display: flex;
+    }
+    &__like-button {
+        width: 3.5rem;
+        padding: 0.2rem 0;
+        background: $primary-dark;
+        color: $primary-light;
+        border-radius: 5px;
+        &:hover {
+            background: $primary-darkblack;
+        }
+    }
 }
 
 .button {
