@@ -9,8 +9,9 @@ const timeStampConverter = function (timeStamp) { //time stamp converter functio
     return newTimeDisplay;
 }
 
-const commentList = document.querySelector(".conversation__list");//select unordered list
-const apiKey = "https://project-1-api.herokuapp.com/comments?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68"
+//select unordered list
+const commentList = document.querySelector(".conversation__list");
+const apiKey = "https://project-1-api.herokuapp.com/comments?api_key=8fe4c583-d608-4b2a-b513-88834b758015"
 
 //grab data from axios for displaying comments
 const DisplayData = function () {
@@ -28,8 +29,7 @@ const DisplayData = function () {
       .catch((error) => {
         console.log(error);
       });
-  };
-  
+  }; 
   DisplayData();
   
 //function to create element with class and text
@@ -37,7 +37,7 @@ function createElementWithClassAndText(element, className, text) {
     const createElement = document.createElement(element);
     createElement.textContent = text;
     createElement.classList.add(className);
-    return createElement;
+    return createElement
 }
 //function to create element with class
 function createElementWithClass(element, className) {
@@ -86,27 +86,42 @@ function displayComment(commentData){
       "conversation__button-wrap"
     );
 
+    const deleteWrapper = createElementWithClass (
+      "div",
+      "conversation__delete-wrap"
+    );
+
+    const deleteButton = createElementWithClassAndText (
+      "button",
+      "conversation__delete-button",
+      "X"
+    );
+
     const likeButton = createElementWithClassAndText (
       "button",
       "conversation__like-button",
       `${commentData.likes} likes`
     );
     
-    commentTextContainer.appendChild(nameElement); //append name to container
-    commentTextContainer.appendChild(dateElement); //append date to container
-    nameDateContainer.appendChild(commentTextContainer); //append name and date container
-    nameDateContainer.appendChild(textElement); // append text to container
-    buttonWrapper.appendChild(likeButton);
-    listItem.appendChild(commentImage); // apend image to list item
+    //append Items to the comment list
+    commentTextContainer.appendChild(nameElement);
+    commentTextContainer.appendChild(dateElement);
+    nameDateContainer.appendChild(commentTextContainer); 
+    nameDateContainer.appendChild(textElement); 
+    listItem.appendChild(deleteWrapper);
+    listItem.appendChild(commentImage); 
+    listItem.appendChild(nameDateContainer); 
     nameDateContainer.appendChild(buttonWrapper);
-    listItem.appendChild(nameDateContainer); // append container w/ name and date to list item 
-    commentList.appendChild(listItem); // append list items to unordered list
+    deleteWrapper.appendChild(deleteButton);
+    buttonWrapper.appendChild(likeButton);
+    commentList.appendChild(listItem); 
 
+    //like button click event
     const id = commentData.id;
     likeButton.addEventListener("click", () => {
       axios
       .put(
-        `https://project-1-api.herokuapp.com/comments/${id}/like?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68`
+        `https://project-1-api.herokuapp.com/comments/${id}/like?api_key=8fe4c583-d608-4b2a-b513-88834b758015`
       )
       .then((response) => {
         console.log(response);
@@ -117,10 +132,24 @@ function displayComment(commentData){
         console.log(error);
       });
     });
+
+    //delete button click event
+    deleteButton.addEventListener("click", () => {
+      axios
+      .delete(
+        `https://project-1-api.herokuapp.com/comments/${id}?api_key=8fe4c583-d608-4b2a-b513-88834b758015`
+      )
+      .then((response) => {
+        console.log(response);
+        listItem.remove();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    });
 };
 
-
-
+//select classes for submit form
 const commentForm = document.querySelector(".conversation__form");
 const commentInput = document.querySelector(".conversation__input")
 const nameEl = document.getElementById("name");
@@ -161,5 +190,3 @@ commentForm.addEventListener("submit", (event) => {
   textEl.classList.remove("conversation__input-error");
   event.target.reset();
 });
-
-

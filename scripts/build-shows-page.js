@@ -1,4 +1,6 @@
-const timeStampConverter = function (timeStamp) { //time stamp converter function
+
+//time stamp converter function
+const timeStampConverter = function (timeStamp) { 
     const timeDisplay = new Date(timeStamp);
     const dateformat = { 
         weekday: "short",
@@ -10,9 +12,11 @@ const timeStampConverter = function (timeStamp) { //time stamp converter functio
     return newTimeDisplay;
 }
 
-const showUl = document.querySelector(".shows__list");//grabbing element for the comment list
+//grabbing element for the comment list
+const showUl = document.querySelector(".shows__list");
 
-const apiKey = "https://project-1-api.herokuapp.com/showdates?api_key=4c340e07-2457-4375-a64b-fb7ab3887b68"
+
+const apiKey = "https://project-1-api.herokuapp.com/showdates?api_key=8fe4c583-d608-4b2a-b513-88834b758015"
 const DisplayData = function () {
     axios
       .get(apiKey)
@@ -29,64 +33,89 @@ const DisplayData = function () {
         console.log(error);
       });
   };
-  
+
   DisplayData();
 
-  function createElementWithClassAndText(tagName, className, text) {
-    const element = document.createElement(tagName);
-    element.classList.add = className;
-    element.innerText = text;
-  }
+//function to create element with class and text
+function createElementWithClassAndText(element, className, text) {
+    const createElement = document.createElement(element);
+    createElement.textContent = text;
+    createElement.classList.add(className);
+    return createElement
+};
+//function to create element with class
+function createElementWithClass(element, className) {
+  const createElement = document.createElement(element);
+  createElement.classList.add(className);
+  return createElement
+};
 
 // creating comment list
 function displayShows(showData){
-    const listItem = document.createElement("li");//create list items
-    listItem.classList.add("shows__item");
+    const listItem = createElementWithClass (
+        "li",
+        "shows__item"
+    );
 
-    const dateContainer = document.createElement("div")//div container for date and date sub-header
-    dateContainer.classList.add("shows__detail-container");
+    const dateContainer = createElementWithClass (
+        "div",
+        "shows__detail-container"
+    );
 
-    const venueContainer = document.createElement("div");//div container for venue and venue sub-header
-    venueContainer.classList.add("shows__detail-container");
+    const venueContainer = createElementWithClass (
+        "div",
+        "shows__detail-container"
+    );
 
-    const locationContainer = document.createElement("div");//div container for location and location sub-header
-    locationContainer.classList.add("shows__detail-container");
+    const locationContainer = createElementWithClass (
+        "div",
+        "shows__detail-container"
+    );
 
-    const dateSubHeading = document.createElement ("p");//Sub-heading for date
-    dateSubHeading.innerText = ("date")
-    dateSubHeading.classList.add("shows__sub-heading");
+    const dateSubHeading = createElementWithClassAndText (
+        "p", 
+        "shows__sub-heading",
+        "date"
+    );
 
-    // const dateSubHeading = createElementWithClassAndText(
-    //     "p", 
-    //     "shows__sub-heading",
-    //     "date"
-    //     );
-
-    const dateItem = document.createElement("p");
-    const formattedDate = timeStampConverter(showData.date)//Date details
-    dateItem.innerText = formattedDate
-    dateItem.classList.add("shows__date");
+    const formattedDate = timeStampConverter(showData.date)
+    const dateItem = createElementWithClassAndText (
+        "p",
+        "shows__date",
+        formattedDate 
+    );
    
-    const venueSubHeading = document.createElement("p");//Sub-heading for venue
-    venueSubHeading.innerText = ("venue");
-    venueSubHeading.classList.add("shows__sub-heading")
+    const venueSubHeading = createElementWithClassAndText (
+        "p",
+        "shows__sub-heading",
+        "venue"  
+    );
 
-    const venueItem = document.createElement("p");//Venue details
-    venueItem.innerText = showData.place;
-    venueItem.classList.add("shows__venue");
+    const venueItem = createElementWithClassAndText (
+        "p",
+        "shows__venue",
+        showData.place  
+    );
     
-    const locationSubHeading = document.createElement("p");//Location sub-heading
-    locationSubHeading.innerText = ("location");
-    locationSubHeading.classList.add("shows__sub-heading");
+    const locationSubHeading = createElementWithClassAndText (
+        "p",
+        "shows__sub-heading",
+        "location"  
+    );
 
-    const locationItem = document.createElement("p");//Location details
-    locationItem.innerText = showData.location;
-    locationItem.classList.add("shows__location");
+    const locationItem = createElementWithClassAndText (
+        "p",
+        "shows__location",
+        showData.location 
+    );
     
-    const showsButton = document.createElement("button");//Shows button
-    showsButton.innerText = ("buy tickets");
-    showsButton.classList.add("shows__button");
+    const showsButton = createElementWithClassAndText (
+        "button",
+        "shows__button",
+        "buy tickets"  
+    );
 
+//append show list
     dateContainer.appendChild(dateSubHeading);
     dateContainer.appendChild(dateItem);
     venueContainer.appendChild(venueSubHeading);
@@ -100,29 +129,30 @@ function displayShows(showData){
     showUl.appendChild(listItem)
 }
 
-
-
-
 //tablet and desktop sub-heading
 const showsTabletSubHeading = document.querySelector(".shows__tablet-display");//
+const showsTabletDate = createElementWithClassAndText (
+    "p",
+    "shows__tablet-heading",
+    "date"  
+);
 
-const showsTabletDate = document.createElement ("p");//Sub-heading for tablet & desktop date
-showsTabletDate.innerText = ("date")
-showsTabletDate.classList.add("shows__tablet-heading");
+const showsTabletVenue = createElementWithClassAndText (
+    "p",
+    "shows__tablet-heading",
+    "venue"  
+);
 
-const showsTabletVenue = document.createElement("p");//Sub-heading for tablet & desktop venue
-showsTabletVenue.innerText = ("venue");
-showsTabletVenue.classList.add("shows__tablet-heading")
+const showsTabletLocation = createElementWithClassAndText (
+    "p",
+    "shows__tablet-heading",
+    "location"  
+);
 
-const showsTabletLocation = document.createElement("p");//Sub-heading for tablet & desktop location
-showsTabletLocation.innerText = ("location");
-showsTabletLocation.classList.add("shows__tablet-heading");
-
-
+//append sub headers 
 showsTabletSubHeading.appendChild(showsTabletDate);
 showsTabletSubHeading.appendChild(showsTabletVenue);
-showsTabletSubHeading.appendChild(showsTabletLocation);//append sub headers to ".shows__tablet-display" element
-
+showsTabletSubHeading.appendChild(showsTabletLocation);
 
 //create high-light hover
 const hoverFunction = function (){
@@ -136,7 +166,6 @@ showsList.forEach((showItem) => {
     });
 });
 };
-
 
 //create high-light select
 const highLightFunction = function () {

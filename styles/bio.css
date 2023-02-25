@@ -49,7 +49,7 @@ h4 {
   font-weight: 600;
 }
 
-.site-header {
+.nav-heading {
   background-color: #323232;
 }
 
@@ -88,6 +88,11 @@ body {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
+}
+@media (min-width: 768px) {
+  .nav__link {
+    padding: 1.5rem;
+  }
 }
 @media (min-width: 1280px) {
   .nav__link {
@@ -590,7 +595,7 @@ p {
 }
 @media (min-width: 768px) {
   .conversation__item {
-    padding: 2rem 0;
+    padding-bottom: 1rem;
   }
 }
 .conversation__comment-container {
@@ -609,13 +614,26 @@ p {
   display: flex;
 }
 .conversation__like-button {
-  width: 3.5rem;
+  width: 3.8rem;
   padding: 0.2rem 0;
   background: #323232;
   color: #ffffff;
   border-radius: 5px;
 }
 .conversation__like-button:hover {
+  background: #000000;
+  font-weight: bold;
+}
+.conversation__delete-button {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #323232;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+}
+.conversation__delete-button:hover {
+  font-weight: bold;
   background: #000000;
 }
 
@@ -636,4 +654,7 @@ p {
     margin-left: auto;
     flex-direction: row-reverse;
   }
+}
+.button:hover {
+  background: #000000;
 }/*# sourceMappingURL=bio.css.map */

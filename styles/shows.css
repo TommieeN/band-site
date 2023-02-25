@@ -49,7 +49,7 @@ h4 {
   font-weight: 600;
 }
 
-.site-header {
+.nav-heading {
   background-color: #323232;
 }
 
@@ -88,6 +88,11 @@ body {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
+}
+@media (min-width: 768px) {
+  .nav__link {
+    padding: 1.5rem;
+  }
 }
 @media (min-width: 1280px) {
   .nav__link {
@@ -303,7 +308,7 @@ body {
   }
 }
 .hero__header {
-  width: 55%;
+  width: 60%;
 }
 @media (min-width: 768px) {
   .hero__header {
@@ -339,7 +344,7 @@ body {
 }
 @media (min-width: 768px) {
   .shows__container {
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
 }
 @media (min-width: 1280px) {
@@ -349,8 +354,13 @@ body {
   }
 }
 .shows__heading {
-  margin: 2rem 1rem 0;
+  margin: 2rem 2.5rem 0;
   font-size: 2.25rem;
+}
+@media (min-width: 768px) {
+  .shows__heading {
+    margin: 2rem 2rem 0;
+  }
 }
 @media (min-width: 1280px) {
   .shows__heading {
