@@ -2,7 +2,7 @@
 
 
  
-<div align="center">
+<div>
   <img src="https://user-images.githubusercontent.com/123577810/232626522-5bc32229-7539-45f1-967c-13233dd96154.gif" alt="Screen Recording" width="100%">
 </div>
 
